@@ -1,0 +1,15 @@
+markdown: kramdown
+permalink: /:year/:month/:title
+url: http://condy.github.io
+name: Youmu's home
+author: condy
+qq: 10086
+email: condy0919@gmail.com
+weibo: 1659167514
+github: condy0919
+highlighter: pygments
+safe: true
+paginate: 20
+img_url: http://condy.github.io/assets/images
+code_dir: /assets/code
+about: "这里是 condy 的个人博客，创建于 2014 年。这里包含了部分个人的“折腾”过程、结论和成果，切换到分类模可以更快地找到感兴趣的内容，欢迎观赏、建议、拍砖……"

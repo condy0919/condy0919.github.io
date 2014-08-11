@@ -22,8 +22,10 @@ $(function() {
     
     $(window).scroll(function () { 
         if ($(window).scrollTop() >= $('#container').position().top) { 
-            alert('bottom!!'); 
-        } 
+            $('#h2outline').css('top', $(window).height()+ 10);
+        } else {
+            $('#h2outline').css('top', $('#container').position().top - 1);
+        }
     });
     
     $('#main').append($('<nav id="h2outline"></nav>')

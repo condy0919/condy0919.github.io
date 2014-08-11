@@ -56,15 +56,15 @@ Date.prototype.format = function(format)
 }
   </script>
   <body onLoad="setInterval(setTimeSpan,1000);">
-    <header class="site-head" style="background-image: url(https://chu2byo.me/content/images/2014/May/Header.jpg)">
+    <header class="site-head" style="background-image: url(/assets/Youmu.jpg)">
       <div class="vertical">
         <div class="site-head-content inner">
-            <a class="blog-logo" href="http://chu2byo.me"><img id="logo" src="https://chu2byo.me/content/images/2014/Aug/head.png" alt="Blog Logo" /></a>
+            <a class="blog-logo" href="{{ site.url }}"><img id="logo" src="/assets/head.png" alt="Blog Logo" /></a>
             <h1 class="blog-title">Youmu&#x27;s Home</h1>
             <h3 class="blog-description">不想成为大三狗</h3>
             <div class="links" style="margin-top: 20px;">
-                <a href="https://twitter.com/CondyChen"><img class="links" src="https://chu2byo.me/assets/img/twitter.png?v=bf8e26e361"></a> &nbsp;
-                <a href="https://github.com/condy0919"><img class="links" src="https://chu2byo.me/assets/img/git.png?v=bf8e26e361"></a> &nbsp;
+                <a href="https://twitter.com/{{ site.twitter }}"><img class="links" src="/assets/twitter.png"></a> &nbsp;
+                <a href="https://github.com/{{ site.github }}"><img class="links" src="/assets/git.png"></a> &nbsp;
             </div>
         </div>
       </div>

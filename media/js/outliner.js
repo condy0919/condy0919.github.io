@@ -22,7 +22,7 @@ $(function() {
     
     $(window).scroll(function () { 
         if ($(window).scrollTop() >= $('#container').position().top) { 
-            $('#h2outline').css('top', 0);
+            $('#h2outline').css('top', 10);
             $('#h2outline').css('position', 'fixed');
         } else {
             $('#h2outline').css('top', $('#container').position().top - 1);

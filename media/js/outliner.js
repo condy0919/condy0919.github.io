@@ -21,8 +21,8 @@ $(function() {
     });
     
     $(window).scroll(function () { 
-        if ($(window).scrollTop() >= $('#container').position().top) { 
-            $('#h2outline').css('top', 10);
+        if ($(window).scrollTop() >= $('#container').position().top - 30) { 
+            $('#h2outline').css('top', 30);
             $('#h2outline').css('position', 'fixed');
         } else {
             $('#h2outline').css('top', $('#container').position().top - 1);

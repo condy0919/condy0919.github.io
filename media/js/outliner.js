@@ -21,7 +21,7 @@ $(function() {
     });
     
     $(window).scroll(function () { 
-        if ($(window).scrollTop() >= $('#container').position().top { 
+        if ($(window).scrollTop() >= $('#container').position().top) { 
             alert('bottom!!'); 
         } 
     });

@@ -22,14 +22,14 @@ $(function() {
     
     $(window).scroll(function () { 
         if ($(window).scrollTop() >= $('#container').position().top) { 
-            $('#h2outline').css('top', $(window).height()+ 10);
+            $('#h2outline').css('top', $(window).height());
         } else {
             $('#h2outline').css('top', $('#container').position().top - 1);
         }
     });
     
     $('#main').append($('<nav id="h2outline"></nav>')
-                         .css('position', 'absolute')
+                         .css('position', 'fixed')
                          .css('top', $('#container').position().top - 1)
                          .css('width', '155px')
                          .css('text-align', 'left')

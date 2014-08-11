@@ -20,6 +20,12 @@ $(function() {
                              .html('<span><a href="#' + val + '">' + idx + '</a></span>'));
     });
     
+    $(window).scroll(function () { 
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) { 
+            alert('bottom!!'); 
+        } 
+    });
+    
     $('#main').append($('<nav id="h2outline"></nav>')
                          .css('position', 'absolute')
                          .css('top', $('#container').position().top - 1)

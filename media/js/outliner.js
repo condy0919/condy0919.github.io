@@ -9,9 +9,9 @@ $(function() {
         var title = $(this).text();
         var id = 'outline_' + idx;
         dict[title] = id;
-
+    
 /*        $(this).append('<a name="' + id + '"></a>'); */
-$(this).html('<a name="' + id + '"></a>'+$(this).html());
+    $(this).html('<a name="' + id + '"></a>'+$(this).html());
     });
 
     var outline_ul = $('<ul style="list-style-type: none"></ul>');
@@ -19,6 +19,7 @@ $(this).html('<a name="' + id + '"></a>'+$(this).html());
         outline_ul.append($('<li></li>')
                              .html('<span><a href="#' + val + '">' + idx + '</a></span>'));
     });
+    
     $('#main').append($('<nav id="h2outline"></nav>')
                          .css('position', 'fixed')
                          .css('top', $('#real_nav').position().top - 1)

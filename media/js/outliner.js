@@ -21,7 +21,7 @@ $(function() {
     });
     
     $('#main').append($('<nav id="h2outline"></nav>')
-                         .css('position', 'relative')
+                         .css('position', 'absolute')
                          .css('top', $('#container').position().top - 1)
                          .css('width', '155px')
                          .css('text-align', 'left')

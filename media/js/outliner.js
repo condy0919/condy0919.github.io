@@ -11,7 +11,7 @@ $(function() {
         dict[title] = id;
     
 /*        $(this).append('<a name="' + id + '"></a>'); */
-    $(this).html('<a name="' + id + '"></a>'+$(this).html());
+    //$(this).html('<a name="' + id + '"></a>'+$(this).html());
     });
 
     var outline_ul = $('<ul style="list-style-type: none"></ul>');

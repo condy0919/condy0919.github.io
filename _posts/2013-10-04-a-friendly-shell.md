@@ -206,3 +206,4 @@ fish当前的特定命令补全大约有60多个。依然有许多额外的命�
 
 如果你认为fish听起来有趣，请过来一起纺织它吧。你可以从[这里](http://roo.no-ip.org/fish/)上下载。fish基于Gnu General Public(GPL)协议释放了，它的i386 rpm和i386 deb包可以获取。
 
+现在一般的发行版源里都有fish。

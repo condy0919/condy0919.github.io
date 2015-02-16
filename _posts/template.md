@@ -3,7 +3,6 @@ layout: post
 title: Machine Learning
 categories: 研究学术
 tags: [Andrew Ng, 课程笔记, 机器学习, Machine Learning]
-
 ---
 
 Machine learning is the field of study that gives computers the ability to learn without being explicitly programmed.

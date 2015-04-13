@@ -2,6 +2,7 @@ markdown: kramdown
 permalink: /:year/:month/:title
 url: http://condy0919.github.io
 name: Youmu's home
+description: 萌萌的妖妖梦酱
 author: condy
 qq: 10086
 twitter: CondyChen

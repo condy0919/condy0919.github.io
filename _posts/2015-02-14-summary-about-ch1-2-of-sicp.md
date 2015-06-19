@@ -35,7 +35,7 @@ double mysqrt(double x) {
 }
 {% endhighlight %}
 
-再或者，选择了求$f(x) = \frac{2}{x}$的[不动点](http://en.wikipedia.org/wiki/Fixed_point_%28mathematics%29)。
+再或者，选择了求$f(x) = \frac{y}{x}$的[不动点](http://en.wikipedia.org/wiki/Fixed_point_%28mathematics%29)。
 
 {% highlight cpp %}
 std::function<double(double)> average_damp(std::function<double(double)> f) {

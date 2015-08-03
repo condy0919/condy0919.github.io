@@ -1,12 +1,12 @@
 <a name="#disqus"></a>
 <div id="disqus_thread"></div>
-<script type="text/javascript" src="http://disqus.com/forums/condy0919/embed.js"></s
+<script type="text/javascript" src="https://disqus.com/forums/condy0919/embed.js"></s
 cript>
 <noscript>
-    <a href="http://disqus.com/forums/condy0919/?url=ref">View the discussion thread
+    <a href="https://disqus.com/forums/condy0919/?url=ref">View the discussion thread
 .</a>
 </noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class=
+<a href="https://disqus.com" class="dsq-brlink">blog comments powered by <span class=
 "logo-disqus">Disqus</span></a>
 
 <script type="text/javascript">
@@ -19,7 +19,7 @@ cript>
         query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
     }
     }
-    document.write('<script charset="utf-8" type="text/javascript" src="http://disqu
+    document.write('<script charset="utf-8" type="text/javascript" src="https://disqu
 s.com/forums/condy0919/get_num_replies.js' + query + '"></' + 'script>');
 })();
 //]]>
@@ -36,7 +36,7 @@ s.com/forums/condy0919/get_num_replies.js' + query + '"></' + 'script>');
 	(function() {
 		var ds = document.createElement('script');
 		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.src = 'https://static.duoshuo.com/embed.js';
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] 
 		|| document.getElementsByTagName('body')[0]).appendChild(ds);

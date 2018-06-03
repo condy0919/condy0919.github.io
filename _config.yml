@@ -9,7 +9,7 @@ twitter: CondyChen
 email: condy0919@gmail.com
 weibo: 1659167514
 github: condy0919
-highlighter: pygments
+highlighter: rouge
 safe: true
 paginate: 20
 img_url: https://condy0919.github.io/assets/images

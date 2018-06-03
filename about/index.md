@@ -8,7 +8,7 @@ comments: no
 
 ----
 
-###联系方式：
+### 联系方式：
 
 {% if site.qq %}
 ＱＱ：[{{ site.qq }}](tencent://message/?uin={{ site.qq }})
@@ -20,7 +20,7 @@ Twitter: [{{ site.twitter }}](https://twitter.com/{{ site.twitter }})
 
 邮箱：[{{ site.email }}](mailto:{{ site.email }})
 
-GitHub : [http://github.com/{{ site.github }}](http://github.com/{{ site.github }})
+GitHub : [https://github.com/{{ site.github }}](http://github.com/{{ site.github }})
 
 ----
 

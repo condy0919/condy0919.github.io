@@ -2,12 +2,10 @@ markdown: kramdown
 permalink: /:year/:month/:title
 url: https://condy0919.github.io
 name: Youmu's home
-description: 萌萌的妖妖梦酱
+description: 喵喵反抗大队队长
 author: condy
-qq: 10086
 twitter: CondyChen
 email: condy0919@gmail.com
-weibo: 1659167514
 github: condy0919
 highlighter: rouge
 safe: true

@@ -1,15 +1,15 @@
 markdown: kramdown
-permalink: /:year/:month/:title
-url: https://condy0919.github.io
-name: Youmu's home
+permalink: /:year/:month/:day/:title/
+url: https://condy0919.github.io/
+name: LessIsMore
 description: 喵喵反抗大队队长
 author: condy
-twitter: CondyChen
+twitter: https://twitter.com/CondyChen
+github: https://github.com/condy0919/
 email: condy0919@gmail.com
-github: condy0919
+disqus: condy0919
 highlighter: rouge
 safe: true
 paginate: 20
-img_url: https://condy0919.github.io/assets/images
-code_dir: /assets/code
-about: "我太渣了……"
+motto: keep moving
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']

@@ -1,11 +1,14 @@
 ---
 layout: post
-title: summary about chapter 1 and 2 of SICP
+title: SICP 第1、2章总结
 category: note
 tags: summary
 ---
 
-##求解$\sqrt{x}$
+* content
+{:toc}
+
+## 求解$\sqrt{x}$
 这是一个非常简单的问题，可能会用二分法来解决它
 
 {% highlight cpp %}

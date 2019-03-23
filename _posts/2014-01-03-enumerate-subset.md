@@ -5,6 +5,9 @@ category: trick
 tags: [trick]
 ---
 
+* content
+{:toc}
+
 生成集合的所有子集
 ==================
 
@@ -13,25 +16,25 @@ tags: [trick]
 
 当需要有规律的2进制生成时，一个广为人知的code就是Gray code。它是以前用来发现数据错误的，其具有2个相邻子集只相差1个元素的性质。其实只要具有这种性质，都可以称之为Gray code。例如有2位2进制数，最具有美感的Gray code的生成方式为：
 
-G(x) = x ^ (x >> 1)， 其中^为异或操作，>>是右移操作，它来源于对n维正方体的顶点用Gray code进制编码。以4位2进制数为例。
+`G(x) = x ^ (x >> 1)`， 其中^为异或操作，>>是右移操作，它来源于对n维正方体的顶点用Gray code进制编码。以4位2进制数为例。
 
 > 0000 0001 0011 0010 0110 0111 0101 0100 1100 1101 1111 1110 1010 1011 1001 1000
 
-{% highlight cpp %}
+```cpp
 for (int i = 0; i < (1 << 4); ++i)
     g = i ^ (i >> 1);
-{% endhighlight %}
+```
 
 不过还一种方法，它按照选中的个数增加的方式来生成2进制数。称为banker's sequence。
 这里先坑着，面包会有的。。。
 
 这里再来一个比较风骚的写法。假设共有10个物品，枚举则可以这样写。
 
-{% highlight cpp %}
+```cpp
 int S = (1 << 10) - 1;
 for (int i = S; i; i = (i - 1) & S)
     // do sth...
-{% endhighlight %}
+```
 
 就这样是看不出来优点的，如果你已经把某些不可能的情况可剪枝掉了，即0b1110011111是全部的情况。只要将上面的S改变一下就行了。
 
@@ -39,7 +42,7 @@ for (int i = S; i; i = (i - 1) & S)
 向量的方式，比2进制的方法速度慢，只是它可以所针对的长度远高于2进制数的表示范围。
 一般的构造方式都是这样：
 
-{% highlight cpp %}
+```cpp
 void subset(int a[], int cur, int n)
 {
     if (cur == n) {
@@ -53,7 +56,7 @@ void subset(int a[], int cur, int n)
     a[cur] = 1;
     subset(a, cur + 1, n);
 }
-{% endhighlight %}
+```
 
 或许你看到了这个尾递归，想把它给优化掉，不过一般现在的C/C++编译器都支持尾递归优化了(-O2)。
 
@@ -65,7 +68,7 @@ void subset(int a[], int cur, int n)
 
 以数字的来举例。
 
-{% highlight cpp %}
+```cpp
 void subset(int a[], int cur, int limit)
 {
     // todo sth. print `array a', etc...
@@ -76,7 +79,7 @@ void subset(int a[], int cur, int limit)
         subset(a, cur + 1, limit)
     }
 }
-{% endhighlight %}
+```
 
 程序显得相当的简洁。:)
 
@@ -88,7 +91,7 @@ void subset(int a[], int cur, int limit)
 
 '110' '101' '011'，这就是一步一步把1向右推进嘛。即此刻我们正在enumerate。并且enumerate的2进制形式中1的个数都是一样的。其实啊，这就是banker's sequence.只要将subset稍候改写一下，即可生成这些2进制序列。
 
-{% highlight cpp %}
+```cpp
 int length = 4;// the size of set
 
 void output(int a[], int limit)
@@ -125,7 +128,7 @@ int main()
 
     return 0;
 }
-{% endhighlight %}
+```
 
 The End.
 

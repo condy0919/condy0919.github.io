@@ -3,6 +3,7 @@ layout: post
 title: SICP 第1、2章总结
 category: note
 tags: summary
+usemathjax: true
 ---
 
 * content
@@ -11,7 +12,7 @@ tags: summary
 ## 求解$\sqrt{x}$
 这是一个非常简单的问题，可能会用二分法来解决它
 
-{% highlight cpp %}
+```cpp
 double mysqrt(double x) {
     double lo = 0, hi = x;
     while (fabs(hi - lo) > eps) {
@@ -23,24 +24,24 @@ double mysqrt(double x) {
     }
     return lo;
 }
-{% endhighlight %}
+```
 
 不过它的迭代次数有点多。
 
 或者选择了牛顿法
 
-{% highlight cpp %}
+```cpp
 double mysqrt(double x) {
     double guess = x;
     while (fabs(guess * guess - x) > eps)
         guess = (guess + x / guess) / 2;
     return guess;
 }
-{% endhighlight %}
+```
 
 再或者，选择了求$f(x) = \frac{y}{x}$的[不动点](http://en.wikipedia.org/wiki/Fixed_point_%28mathematics%29)。
 
-{% highlight cpp %}
+```cpp
 std::function<double(double)> average_damp(std::function<double(double)> f) {
     return [f](double x) { return (x + f(x)) / 2.0; };
 }
@@ -55,11 +56,11 @@ double fixed_point(std::function<double(double)> f) {
 double mysqrt(double x) {
     return fixed_point(average_damp([](double x) { return 2.0 / x; }));
 }
-{% endhighlight %}
+```
 
 如果想要求$\sqrt[n]{x}$的话，应用fixed point需要将原函数f(x)求至少$\log_{2}{n}$次average\_damp，或许采用了抽象的方式来写,
 
-{% highlight cpp %}
+```cpp
 template<typename T, typename U, typename V>
 auto compose(std::function<V(U)> f, std::function<U(T)> g) {
     return std::function<V(T)>([=](T&& x) { return f(g(std::forward<T>(x))); });
@@ -79,11 +80,11 @@ double sqrtn(int n, double x) {
     auto fn = repeat(t, static_cast<std::function<Type(Type)>>(average_damp));
     return fixed_point(fn([=](double a) { return x / pow(a, n - 1); }));
 }
-{% endhighlight %}
+```
 
 又或者是更直接的应用.
 
-{% highlight cpp %}
+```cpp
 double sqrtn(int n, double x) {
     int t = log2(n) + eps;
     std::function<double(double)> fn =
@@ -93,11 +94,11 @@ double sqrtn(int n, double x) {
         fn = [=](double x) { return average_damp(fn)(x); };
     return fixed_point(fn);
 }
-{% endhighlight %}
+```
 
 --------------------------------------------------------------------------
 
-##初等数论的一些东西
+## 初等数论的一些东西
 
 ### GCD的复杂度
 可以使用[Lamé's Theorem](http://en.wikipedia.org/wiki/Euclidean_algorithm#Worst-case)
@@ -112,7 +113,7 @@ $a^p \equiv a \pmod{p}$ 这就是[费马小定理](http://en.wikipedia.org/wiki/
 
 $a^{p-1} \equiv 1 \pmod{p}$, 使用这个等式的检测素数方法就是[Miller Rabin](http://en.wikipedia.org/wiki/Miller-Rabin_primality_test)素数测试啦！
 
-{% highlight scheme %}
+```scheme
 (define (expmod base exp m)
   (cond ((= exp 0) 1)
         ((even? exp) (remainder (square (expmod base (/ exp 2) m)) m))
@@ -136,11 +137,11 @@ $a^{p-1} \equiv 1 \pmod{p}$, 使用这个等式的检测素数方法就是[Mille
   (cond ((= times 0) #t)
         ((miller-rabin-prime?) (miller-rabin-test p (- times 1)))
         (else #f)))
-{% endhighlight %}
+```
 
 --------------------------------------------------------------------------
 
-##Scheme的一些东西
+## Scheme的一些东西
 一个简单的符号演算
 
 其实只是高中数学...
@@ -156,7 +157,7 @@ $$ \frac{\partial f(x)g(x)}{\partial x}=f(x)\frac{\partial g(x)}{\partial x} + g
 主要是判断等式是哪种类型。其可以是和式、乘式、幂的形式...
 一个变量就是一个symbol, 和式的话是一个'(+ a b)的形式，乘式类同，幂采用'(\*\* a b)这种表示方法。
 
-{% highlight scheme %}
+```scheme
 (define (variable? x) (symbol? x))
 
 (define (same-variable? x y)
@@ -230,7 +231,6 @@ $$ \frac{\partial f(x)g(x)}{\partial x}=f(x)\frac{\partial g(x)}{\partial x} + g
 (deriv '(* (* x y) (+ x 3 y)) 'x)
 (deriv '(** x 0) 'x)
 (deriv '(* x y (+ x 3 y)) 'x)
-{% endhighlight %}
+```
 
-当然还有church numbers. Amazing, 特别是predecessor的[推导](http://en.wikipedia.org/wiki/Church_encoding#Derivation_of_predecessor_function)，特别有味道。
-
+当然还有 church numbers. Amazing, 特别是 predecessor 的[推导](http://en.wikipedia.org/wiki/Church_encoding#Derivation_of_predecessor_function)，特别有味道。

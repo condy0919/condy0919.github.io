@@ -19,7 +19,7 @@ Fish – 交互友好型的Shell
 ## 介绍
 在过去的十年中，花了很大精力使得计算机对用户友好。它取得了巨大发展，但在非图形程序(例如 Shell)上就显得缓慢。遗憾的是有许多的事情通过 Shell 做可以更加方便。那些<ruby>命令<rp>(</rp><rt>commands</rt><rp>)</rp></ruby>， <ruby>管道<rp>(</rp><rt>pipelines</rt><rp>)</rp></ruby>，<ruby>环境变量<rp>(</rp><rt>environment variables</rt><rp>)</rp></ruby>多少有点复杂，但我相信现代的 Shell 更难使用，无论是对新手或老手。我写了一个新的 Shell - Fish ，或者可以叫做<ruby>交互友好型<rp>(</rp><rt>friendly interactive</rt><rp>)</rp></ruby> Shell，其主要是为了解决我在其他 Shell 中遇到的一些问题。
 
-fish 的特点有代码高量，高级的 tab 补全，更具发现性的帮助(discoverable help) ，修正的 Shell 语法以及其他。在这篇文章中，我将描述其中的一些特点以及解释为什么我认为它们是有帮助的。
+fish 的特点有代码高量，高级的 tab 补全，更具<ruby>发现性<rp>(</rp><rt>discoverable<rp>)</rp></rt></ruby>的帮助，修正的 Shell 语法以及其他。在这篇文章中，我将描述其中的一些特点以及解释为什么我认为它们是有帮助的。
 
 --------------------------
 

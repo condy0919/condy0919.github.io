@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 从 awesome 切换至 xmonad
-categories: note
+categories: linux
+tags: note
 usemermaid: false
 usemathjax: false
 ---

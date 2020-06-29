@@ -1,8 +1,8 @@
 ---
 layout: post
 title: SICP 第1、2章总结
-categories: note
-tags: summary
+categories: summary
+tags: note
 usemathjax: true
 ---
 

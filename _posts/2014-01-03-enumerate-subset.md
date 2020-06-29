@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "enumerate subset"
-categories: trick
-tags: [trick]
+title: enumerate subset
+categories: reading
+tags: algorithm
 ---
 
 * content

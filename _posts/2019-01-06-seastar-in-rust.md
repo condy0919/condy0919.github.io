@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 用 Rust 来重写 seastar
-categories: [project]
-tags: [rust, seastar]
+categories: project
+tags: rust
 ---
 
 * content

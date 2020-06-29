@@ -2,7 +2,7 @@
 layout: post
 title: 一个友好的 shell
 categories: translation
-tags: [shell, repl]
+tags: shell
 ---
 
 * content

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "enumerate subset"
-category: trick
+categories: trick
 tags: [trick]
 ---
 

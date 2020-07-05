@@ -79,6 +79,8 @@ usemathjax: false
 口搜索。并且在 `Emacs` 中配合
 [zeal-at-point](https://github.com/jinzhu/zeal-at-point) 可以获得更好的体验。
 
+实际上也可以使用[polybar][polybar]，它自带一个`systray`。
+
 ## xmonad 配置
 
 这里选择了 5 个比较常用的 layout。
@@ -237,5 +239,6 @@ noBorders Full
 [windowBringer]: https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Actions-WindowBringer.html
 [scratchpad]: https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Util-Scratchpad.html
 [prompt]: https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Prompt.html
+[polybar]: https://github.com/polybar/polybar
 [passwordstore]: https://www.passwordstore.org
 [my-xmonad]: https://github.com/condy0919/my-xmonad

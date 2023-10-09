@@ -52,8 +52,8 @@ usemathjax: false
 
 优点[摘自宋教授博客](https://maskray.me/blog/2011-11-30-xmonad-config):
 
-> Xmonad 用 Haskell 配置，因为这一点注定了当配置复杂到一定程度后，会远远胜过 那
-> 些自定义配置语言的 wm。
+> Xmonad 用 Haskell 配置，因为这一点注定了当配置复杂到一定程度后，会远远胜过那些
+> 自定义配置语言的 wm。
 
 > 得到 monad transformer 精髓的 layout transformer 使得复合 layout 变得非常容易，
 > 可以轻易定制出在其他 wm 中不可能实现的 layout。

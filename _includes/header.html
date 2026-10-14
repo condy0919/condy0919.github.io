@@ -1,34 +1,30 @@
-<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+<header class="navbar navbar-expand-md fixed-top docs-nav" data-bs-theme="dark" role="banner">
   <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">    
-        <li>
-          <a href="{{ '/'  }}">Home</a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="展开或收起导航">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <nav class="collapse navbar-collapse" id="main-navigation" aria-label="主导航">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/'  }}">Home</a>
         </li>
-        <li>
-          <a href="{{ '/categories/' }}">Category</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/categories/' }}">Category</a>
         </li>
-        <li>
-          <a href="{{ '/tag/'  }}">Tag</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/tag/'  }}">Tag</a>
         </li>
-        <li>
-          <a href="{{ '/friends' }}">Friends</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/friends' }}">Friends</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a rel="nofollow" target="_blank" href="{{site.github}}">Github</a></li>
-            <li><a rel="nofollow" target="_blank" href="{{site.twitter}}">Twitter</a></li>
-            <li><a href="{{ '/feed.xml'  }}">RSS订阅</a></li>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" id="about-menu-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">关于</button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="about-menu-toggle" data-bs-theme="light">
+            <li><a class="dropdown-item" rel="nofollow noopener noreferrer" target="_blank" href="{{site.github}}">Github</a></li>
+            <li><a class="dropdown-item" rel="nofollow noopener noreferrer" target="_blank" href="{{site.twitter}}">Twitter</a></li>
+            <li><a class="dropdown-item" href="{{ '/feed.xml'  }}">RSS订阅</a></li>
           </ul>
         </li>
       </ul>

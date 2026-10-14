@@ -1,60 +1,40 @@
-/*!
- * Adapted from Bootstrap docs JavaScript
- */
-
-
-!function ($) {
+/* Prepare the article before application.js tracks the current section. */
+(function ($) {
+  'use strict';
 
   $(function () {
-      
-		orderTheLeftNavigations();
+    const source = document.getElementById('markdown-toc');
+    const destination = document.querySelector('#navigation .sidenav');
 
-    function orderTheLeftNavigations(){
-	    $('#navigation .sidenav').html($("#markdown-toc").html());
-	    $('#navigation .sidenav ul').addClass("nav");
-	    $("#markdown-toc").remove();
-
-      // 添加Bootstrap表格样式 table-hover 
-      $(".docs-content table").addClass("table table-hover");
-  	}
-
-  	$(window).load(initilizeAfterLoad);
-
-    function initilizeAfterLoad(){
-      repairTheImagesWhichCrossTheMaxWidth();
-      resetHeadersStyles();
+    // The home page already has a year/month index and no Markdown TOC.
+    if (source && destination) {
+      destination.replaceChildren(...source.childNodes);
+      source.remove();
     }
 
-    // 重新计算图片显示大小。
-  	function repairTheImagesWhichCrossTheMaxWidth(){
-  		var images = $(".docs-content img");
-  		if(images != undefined && images.length > 0){
-  			for(var i=0; i< images.length;i++){
-  				var imgWidth = images[i].width;
-  				if( imgWidth >= 757 ){
-  					 images[i].width = 757;
-  				}
-  			}
-  		}
-  	}
+    $('#navigation ul').addClass('nav flex-column');
+    $('#navigation li').addClass('nav-item');
+    $('#navigation a').addClass('nav-link');
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) sidebar.hidden = !sidebar.querySelector('a[href]');
 
-    // 设置标题样式
-    function resetHeadersStyles(){
-      resetHeaderItemStyles($(".docs-content h1"));
-      resetHeaderItemStyles($(".docs-content h2"));
-    }
+    $('.docs-content table').addClass('table table-hover').each(function () {
+      if (this.parentElement.classList.contains('table-responsive')) return;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-responsive';
+      this.before(wrapper);
+      wrapper.appendChild(this);
+    });
 
-    function resetHeaderItemStyles(headers){
-      if(headers != undefined && headers.length > 0){
-        for(var i=0; i< headers.length;i++){
-          
-          var header = headers[i];
-          $(header).html($(header).html() + '<span class="anchor-target" id="' + header.id + '"></span>' +
-            '<a href="#' + header.id + '" name="' + header.id + '" class="anchor glyphicon glyphicon-link"></a>');
-          $(header).removeAttr('id');
-        }
-      }
-    }
-  })
+    $('.docs-content').find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function () {
+      if (!this.id || this.querySelector(':scope > a.anchor')) return;
 
-}(jQuery)
+      const anchor = document.createElement('a');
+      anchor.className = 'anchor fa fa-link';
+      anchor.href = '#' + encodeURIComponent(this.id);
+      anchor.setAttribute('aria-label', '链接到：' + this.textContent.trim());
+      anchor.title = '链接到本节';
+      this.appendChild(anchor);
+    });
+  });
+}(jQuery));

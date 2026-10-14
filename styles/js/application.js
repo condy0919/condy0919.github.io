@@ -1,103 +1,88 @@
-/*!
- * Adapted from Bootstrap docs JavaScript
- */
-
-
-!function ($) {
+(function ($) {
+  'use strict';
 
   $(function () {
+    $('.docs-container [href="#"]').off('click.blogPlaceholder').on('click.blogPlaceholder', function (event) {
+      event.preventDefault();
+    });
 
-    // IE10 viewport hack for Surface/desktop Windows 8 bug
-    //
-    // See Getting Started docs for more information
-    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-      var msViewportStyle = document.createElement('style')
-      msViewportStyle.appendChild(
-        document.createTextNode(
-          '@-ms-viewport{width:auto!important}'
-        )
-      )
-      document.querySelector('head').appendChild(msViewportStyle)
+    const navigation = document.getElementById('navigation');
+    if (!navigation || navigation.dataset.scrollTracking === 'true') return;
+    navigation.dataset.scrollTracking = 'true';
+
+    const sections = [];
+    navigation.querySelectorAll('a[href]').forEach(function (link) {
+      const target = new URL(link.href);
+      if (target.origin !== location.origin || target.pathname !== location.pathname || !target.hash) return;
+      let id = target.hash.slice(1);
+      try {
+        id = decodeURIComponent(id);
+      } catch (error) {
+        // A literal percent sign can also be part of a heading ID.
+      }
+      const heading = document.getElementById(id);
+      if (heading) sections.push({ link: link, heading: heading, top: 0 });
+    });
+    if (!sections.length) return;
+
+    let activeLink = null;
+    let framePending = false;
+
+    function update() {
+      framePending = false;
+      const position = window.scrollY + 80;
+      let current = sections[0];
+      for (const section of sections) {
+        if (section.top > position) break;
+        current = section;
+      }
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1];
+      }
+      if (activeLink === current.link) return;
+      activeLink = current.link;
+
+      navigation.querySelectorAll('.nav-link').forEach(function (link) {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
+      });
+      activeLink.setAttribute('aria-current', 'location');
+      let item = activeLink.closest('li');
+      while (item && navigation.contains(item)) {
+        const link = item.querySelector(':scope > .nav-link');
+        if (link) link.classList.add('active');
+        item = item.parentElement.closest('li');
+      }
     }
 
-    var $window = $(window)
-    var $body   = $(document.body)
+    function scheduleUpdate() {
+      if (framePending) return;
+      framePending = true;
+      window.requestAnimationFrame(update);
+    }
 
-    $body.scrollspy({
-      target: '.sidebar',
-      offset: 20 // required to select the right thing. if this is smaller then you are at the top of one section
-                 // but the next section is highlighted
-    });
-
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    });
-
-    $('.docs-container [href=#]').click(function (e) {
-      e.preventDefault()
-    });
-
-
-    $('.source-link').each(function () {
-      var id = $(this).data('content');
-      var content = $('<span>').append($('#' + id)).html();
-      $(this).attr('data-content', content);
-
-      // Keep popovers open when hovered
-      $(this).popover({
-        trigger: 'manual',
-        container: 'body',
-        placement: 'left',
-        template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
-        html: true,
-        delay: {show: 50, hide: 750}
-      }).on('mouseenter', function () {
-        var self = this;
-        $(this).popover('show');
-        $(this).addClass('active');
-        $(this).addClass('popover-source');
-
-        $('.popover').on('mouseleave', function () {
-          $(self).popover('hide');
-          $(self).removeClass('active');
-        });
-
-      }).on('mouseleave', function () {
-        var self = this;
-        setTimeout(function () {
-          if (!$('.popover:hover').length) {
-            $(self).popover('hide');
-            $(self).removeClass('active');
-          }
-        }, 100);
+    function refresh() {
+      sections.forEach(function (section) {
+        section.top = section.heading.getBoundingClientRect().top + window.scrollY;
       });
+      sections.sort(function (first, second) { return first.top - second.top; });
+      scheduleUpdate();
+    }
+
+    // Track heading positions instead of observing their short boxes: the
+    // current section stays highlighted throughout long paragraphs/code blocks.
+    refresh();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', refresh);
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', refresh, { once: true });
+    }
+    document.querySelectorAll('.docs-content img').forEach(function (image) {
+      if (!image.complete) image.addEventListener('load', refresh, { once: true });
     });
-
-
-    // back to top
-    setTimeout(function () {
-      var $sideBar = $('.sidebar')
-
-      $sideBar.affix({
-        offset: {
-          top: function () {
-            var offsetTop      = $sideBar.offset().top
-            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-            var navOuterHeight = $('.docs-nav').height()
-
-            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          },
-          bottom: function () {
-            return (this.bottom = $('.footer').outerHeight(true))
-          }
-        }
-      })
-    }, 100);
-
-    setTimeout(function () {
-      $('.top').affix()
-    }, 100);
-
-  })
-
-}(jQuery)
+    const content = document.querySelector('.docs-content');
+    if (content && window.ResizeObserver) {
+      new ResizeObserver(refresh).observe(content);
+    }
+  });
+}(jQuery));

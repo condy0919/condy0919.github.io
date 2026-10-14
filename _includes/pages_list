@@ -1,17 +1,17 @@
 {% for node in pages_list %}
   {% if node.title != null %}
     {% if group == null or group == node.group %}
-    	{% if page.url == node.url %}
-    	<ol class="breadcrumb">
-    		<li class="active"><a href="{{ node.url }}" class="active">{{ node.title }}</a></li>
-    		<li style="float:right;"><span>{{ node.date | date: "%F" }}</span></li>
-    	</ol>
-    	{% else %}
-    	<ol class="breadcrumb">
-    		<li><a href="{{ node.url }}">{{ node.title }}</a></li>
-    		<li style="float:right;"><span>{{ node.date | date: "%F" }}</span></li>
-    	</ol>
-    	{% endif %}
+      {% if page.url == node.url %}
+      <ol class="post-list-entry">
+        <li class="active"><a href="{{ node.url }}" class="active">{{ node.title }}</a></li>
+        <li style="float:right;"><span>{{ node.date | date: "%F" }}</span></li>
+      </ol>
+      {% else %}
+      <ol class="post-list-entry">
+        <li><a href="{{ node.url }}">{{ node.title }}</a></li>
+        <li style="float:right;"><span>{{ node.date | date: "%F" }}</span></li>
+      </ol>
+      {% endif %}
     {% endif %}
   {% endif %}
 {% endfor %}

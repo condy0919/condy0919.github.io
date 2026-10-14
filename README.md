@@ -102,6 +102,8 @@ tag: 教程
 
 Bootstrap 的 bundle 包含下拉菜单定位所需的 Popper。`styles/css/index.css` 只保存博客主题的定制样式，在 Bootstrap 样式之后加载；以后更新 Bootstrap 时不要用框架 CSS 覆盖这个文件。
 
+Bootstrap 的 CSS 和 JavaScript 同目录下还保留对应版本的 `.map` 文件，供浏览器开发工具还原源码；更新依赖时应一起更新，以免调试时出现 source map 的 404 请求。
+
 主题已迁移到 Bootstrap 5 的 `data-bs-*` 属性和 JavaScript API，目录固定使用 CSS `position: sticky`，标题链接使用现有的 Font Awesome 图标。不要再使用 Bootstrap 3 的 `data-toggle`、`affix` 或 Glyphicons 写法。jQuery 仅在页面头部加载一次，供主题脚本使用。
 
 升级后可用下面的 `jekyll server` 预览，检查首页、分类、标签和文章页，确认桌面与手机宽度下导航菜单能开关、Esc 能关闭下拉菜单、目录链接及滚动高亮正常，且浏览器控制台没有 JavaScript 错误。

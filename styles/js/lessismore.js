@@ -15,8 +15,10 @@
     $('#navigation ul').addClass('nav flex-column');
     $('#navigation li').addClass('nav-item');
     $('#navigation a').addClass('nav-link');
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) sidebar.hidden = !sidebar.querySelector('a[href]');
+    const toggle = document.getElementById('toc-toggle');
+    if (toggle) {
+      toggle.hidden = !document.querySelector('#navigation a[href]:not([href=""]):not([href="#"])');
+    }
 
     $('.docs-content table').addClass('table table-hover').each(function () {
       if (this.parentElement.classList.contains('table-responsive')) return;

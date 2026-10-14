@@ -1,17 +1,10 @@
 {% for node in pages_list %}
   {% if node.title != null %}
     {% if group == null or group == node.group %}
-      {% if page.url == node.url %}
-      <ol class="post-list-entry">
-        <li class="active"><a href="{{ node.url }}" class="active">{{ node.title }}</a></li>
-        <li style="float:right;"><span>{{ node.date | date: "%F" }}</span></li>
-      </ol>
-      {% else %}
-      <ol class="post-list-entry">
-        <li><a href="{{ node.url }}">{{ node.title }}</a></li>
-        <li style="float:right;"><span>{{ node.date | date: "%F" }}</span></li>
-      </ol>
-      {% endif %}
+      <li class="post-list-entry">
+        <a href="{{ node.url }}" class="post-list-link{% if page.url == node.url %} active{% endif %}">{{ node.title }}</a>
+        <time class="post-list-date" datetime="{{ node.date | date: '%Y-%m-%d' }}">{{ node.date | date: '%Y-%m-%d' }}</time>
+      </li>
     {% endif %}
   {% endif %}
 {% endfor %}

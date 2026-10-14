@@ -4,42 +4,33 @@ title: Tags
 header: Posts By Tag
 ---
 
-<div class="container docs-container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="sidebar d-print-none" role="complementary">
-        <div id="navigation">
-        	<h1>目录</h1>
-      		<ul class="nav sidenav">
-			  	{% if site.tags.first[0] == null %}
-				  	{% for tag in site.tags %} 
-				  	<li><a href="{{ site.JB.tags_path }}#{{ tag }}-ref">{{ tag }} <span >({{ site.tags[tag].size }})</span></a></li>
-				  	{% endfor %}
-				{% else %}
-				  	{% for tag in site.tags %} 
-				  	<li><a href="{{ site.JB.tags_path }}#{{ tag[0] }}-ref">{{ tag[0] }} <span style="color: #999999;" >({{ tag[1].size }})</span></a></li>
-				  	{% endfor %}
-				{% endif %}
-          	</ul>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-9" role="main">
-      <div class="docs-content">
-        <div class="wrapper">
-          <div class="home">
+{% capture toc_content %}
+<nav id="navigation" aria-label="页面目录">
+  <ul class="nav sidenav">
+    {% if site.tags.first[0] == null %}
+      {% for tag in site.tags %}
+        <li><a href="{{ site.JB.tags_path }}#{{ tag }}-ref">{{ tag }} <span class="text-secondary">({{ site.tags[tag].size }})</span></a></li>
+      {% endfor %}
+    {% else %}
+      {% for tag in site.tags %}
+        <li><a href="{{ site.JB.tags_path }}#{{ tag[0] }}-ref">{{ tag[0] }} <span class="text-secondary">({{ tag[1].size }})</span></a></li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</nav>
+{% endcapture %}
+{% include toc.html content=toc_content %}
 
-          	{% for tag in site.tags %} 
-			  <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
-			  <ul>
-			    {% assign pages_list = tag[1] %}  
-			    {% include pages_list %}
-			  </ul>
-			{% endfor %}
-
-          </div>
-        </div>
-      </div>
+<main class="container docs-container">
+  <div class="docs-content">
+    <div class="home">
+      {% for tag in site.tags %}
+        <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
+        <ul class="post-list">
+          {% assign pages_list = tag[1] %}
+          {% include pages_list %}
+        </ul>
+      {% endfor %}
     </div>
   </div>
-</div>
+</main>

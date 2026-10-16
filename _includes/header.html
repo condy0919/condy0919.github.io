@@ -1,5 +1,8 @@
 <header class="navbar navbar-expand-md fixed-top docs-nav" data-bs-theme="dark" role="banner">
   <div class="container">
+    {% if page.layout == 'post' %}
+    <a class="navbar-brand" href="{{ '/' | relative_url }}">{{ site.name | escape }}</a>
+    {% endif %}
     <button class="btn toc-toggle" id="toc-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#table-of-contents" aria-controls="table-of-contents" aria-expanded="false" hidden>
       <span class="fa fa-list-ul" aria-hidden="true"></span> 目录
     </button>

@@ -20,7 +20,10 @@
       toggle.hidden = !document.querySelector('#navigation a[href]:not([href=""]):not([href="#"])');
     }
 
-    $('.docs-content table').addClass('table table-hover').each(function () {
+    $('.docs-content table').each(function () {
+      // Rouge line numbers and MathJax use tables internally; leave their layout alone.
+      if (this.closest('pre, .highlight, .reading-code, .MathJax, .MathJax_Display, .MathJax_SVG_Display, .MJXc-display, .MathJax_Preview, [id^="MathJax-"], .diagram-figure, .language-mermaid')) return;
+      this.classList.add('table', 'table-hover');
       if (this.parentElement.classList.contains('table-responsive')) return;
       const wrapper = document.createElement('div');
       wrapper.className = 'table-responsive';

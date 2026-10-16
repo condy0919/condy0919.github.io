@@ -1,0 +1,260 @@
+/* Wide article content keeps its own scrolling surface and visible controls. */
+.reading-code,
+.reading-table,
+.reading-math {
+  min-width: 0;
+  max-width: 100%;
+  margin: 1.4em 0;
+}
+
+.reading-code {
+  background: #f7f7f9;
+  border: 1px solid #dce3ea;
+  border-radius: 7px;
+}
+
+.reading-code-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  padding: 8px 12px;
+  color: #526477;
+  background: #eff3f7;
+  border-bottom: 1px solid #dce3ea;
+  border-radius: 7px 7px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.reading-code-language {
+  margin-right: auto;
+  font-weight: 600;
+}
+
+.reading-code-status {
+  color: #25613c;
+}
+
+.reading-code-status.reading-copy-failed {
+  color: #a33b27;
+}
+
+.reading-code-button {
+  padding: 4px 8px;
+  color: #36556e;
+  background: #fff;
+  border: 1px solid #becbd6;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.reading-code-button:hover,
+.reading-code-button[aria-pressed="true"] {
+  color: #20384d;
+  background: #dfeaf4;
+  border-color: #7b97af;
+}
+
+.reading-code-button:focus-visible,
+.reading-overflows:focus-visible {
+  outline: 2px solid #43759e;
+  outline-offset: -2px;
+}
+
+.reading-code-button:disabled {
+  opacity: 0.6;
+}
+
+.reading-code-body {
+  overflow: auto;
+  border-radius: 0 0 7px 7px;
+}
+
+.post-content .reading-code .highlight,
+.post-content .reading-code .highlighter-rouge {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.post-content .reading-code pre {
+  width: max-content;
+  min-width: 100%;
+  padding: 16px 18px;
+  margin: 0;
+  overflow: visible;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.post-content .reading-code pre code {
+  white-space: inherit;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.post-content .reading-code-wrap pre {
+  width: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.post-content .reading-code-wrap pre code {
+  overflow-wrap: anywhere;
+}
+
+.post-content .reading-code .rouge-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.post-content .reading-code .rouge-table pre {
+  padding: 0;
+}
+
+.post-content .reading-code .rouge-table .gutter {
+  width: 3em;
+  padding-right: 1em;
+  vertical-align: top;
+}
+
+.post-content .reading-code-wrap .rouge-table {
+  table-layout: fixed;
+}
+
+.post-content .reading-code-wrap .lineno {
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+.post-content .reading-scroll-hint {
+  display: block;
+  padding: 6px 12px;
+  margin: 0;
+  color: #637385;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.reading-scroll-hint[hidden] {
+  display: none;
+}
+
+.reading-table > .table-responsive {
+  max-width: 100%;
+}
+
+.docs-content .reading-table .table {
+  margin-bottom: 0;
+}
+
+.reading-math-scroll {
+  max-width: 100%;
+  padding: 0.8em 0.5em 1em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.reading-inline-math {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.reading-inline-math-scroll {
+  display: block;
+  max-width: 100%;
+  padding: 0.35em 0.25em 0.45em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.reading-math-scroll > .MathJax_Display,
+.reading-math-scroll > .MathJax_SVG_Display,
+.reading-math-scroll > .MJXc-display {
+  /* MathJax's numbered CHTML uses a 10000em table cell. fit-content respects
+     its minimum formula width without expanding to that artificial maximum. */
+  width: fit-content;
+  min-width: 100%;
+  margin: 0;
+}
+
+.reading-math-scroll.reading-math-zoom-active,
+.reading-inline-math-scroll.reading-math-zoom-active {
+  overflow: visible;
+}
+
+.reading-math-zoom-active > .MathJax_Display,
+.reading-math-zoom-active > .MathJax_SVG_Display,
+.reading-math-zoom-active > .MJXc-display {
+  width: 100%;
+  min-width: 0;
+}
+
+/* The native zoom frame is a sibling of this original formula, so only the
+   background formula is clipped while its larger popup is being inspected. */
+.reading-math-zoom-active > :is(.MathJax_Display, .MathJax_SVG_Display, .MJXc-display) > [id$="-Frame"],
+.reading-inline-math-scroll.reading-math-zoom-active > [id$="-Frame"] {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.reading-copy-buffer {
+  position: fixed;
+  top: 0;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  opacity: 0;
+}
+
+@media (max-width: 575.98px), (pointer: coarse) {
+  .reading-code-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .reading-code-toolbar {
+    gap: 6px;
+    padding: 7px 9px;
+  }
+
+  .reading-code-status:not(:empty) {
+    order: 4;
+    flex-basis: 100%;
+  }
+
+  .post-content .reading-code pre {
+    padding: 12px;
+  }
+}
+
+@media print {
+  .reading-code-toolbar,
+  .reading-scroll-hint {
+    display: none;
+  }
+
+  .reading-code-body,
+  .reading-table > .table-responsive,
+  .reading-math-scroll,
+  .reading-inline-math-scroll {
+    overflow: visible;
+  }
+
+  .post-content .reading-code pre {
+    width: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}

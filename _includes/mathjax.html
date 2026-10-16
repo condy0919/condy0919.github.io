@@ -10,8 +10,21 @@
     messageStyle: "none",
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
+
+  MathJax.Hub.Register.MessageHook("End Math", function () {
+    document.dispatchEvent(new Event('blog:math-typeset'));
+  });
+  MathJax.Hub.Register.StartupHook("End", function () {
+    document.dispatchEvent(new Event('blog:math-typeset'));
+  });
+  MathJax.Hub.Register.StartupHook("MathZoom Ready", function () {
+    document.dispatchEvent(new Event('blog:math-zoom-ready'));
+  });
+  MathJax.Hub.Register.MessageHook("math unzoomed", function () {
+    document.dispatchEvent(new Event('blog:math-unzoomed'));
+  });
 </script>
 
 <script type="text/javascript" async
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
   {% include head.html %}
 
-  <body class="index">
+  <body class="index{% if page.layout == 'post' %} article-page{% endif %}">
 
     {% include header.html %}
-    {% include docs_header.html %}
-    {% if page.title %}
-      {% include banner.html %}
-    {% endif %}
+    {% unless page.layout == 'post' %}
+      {% include docs_header.html %}
+      {% if page.title %}
+        {% include banner.html %}
+      {% endif %}
+    {% endunless %}
 
     {{ content }}
 

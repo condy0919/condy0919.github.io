@@ -8,6 +8,12 @@
 	<link rel="stylesheet" href="{{ '/styles/css/index.css'  }}">
 	<link rel="stylesheet" href="{{ '/styles/css/fontawesome/css/font-awesome.min.css'  }}">
 	<link rel="stylesheet" href="{{ '/styles/css/syntax.css'  }}">
+	{% if page.layout == 'post' %}
+	<link rel="stylesheet" href="{{ '/styles/css/reading.css' | relative_url }}">
+	{% endif %}
+	{% if page.usemermaid %}
+	<link rel="stylesheet" href="{{ '/styles/css/diagram-viewer.css' | relative_url }}">
+	{% endif %}
 	<link rel="canonical" href="{{ page.url | replace:'index.html',''  }}">
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ '/feed.xml'  }}">
 	

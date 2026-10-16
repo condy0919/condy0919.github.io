@@ -9,3 +9,6 @@
 <script src="{{ '/styles/js/holder.min.js'  }}"></script>
 <script src="{{ '/styles/js/lessismore.js'  }}"></script>
 <script src="{{ '/styles/js/application.js'  }}"></script>
+{% if page.layout == 'post' %}
+<script src="{{ '/styles/js/reading.js' | relative_url }}"></script>
+{% endif %}
